@@ -1,0 +1,14 @@
+# dsh-token-usage bundle patch: inserts the dual-face plugin row into the web
+# profile roster. Applied as a profile bundle layer (the `dsh.bundle.patch`
+# manifest field); activate with
+# `dsh plugin --profile web add link:<path-to-repo>`.
+#
+# The row is a bare plugin by package name: the node half (exports ".") runs
+# in the host process (session-event capture, per-day folds, cost estimation,
+# official-price fetching, /api/dsh-token-usage/* routes), and the
+# `dsh.client` declaration in package.json makes the browser half
+# (exports "./client", served at /plugins/<id>/client.js) load in the web GUI
+# and register the "Token 用量" page inside Settings.
+- insert:
+    - id: token-usage
+      name: 'dsh-token-usage'

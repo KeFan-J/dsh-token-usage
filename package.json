@@ -1,0 +1,46 @@
+{
+  "name": "dsh-token-usage",
+  "description": "Token usage & cost dashboard for DeepSeek Harness (DSH): today/week/month token totals, real-time cost estimation from DeepSeek's official pricing, thinking/task durations, per-model & per-project rankings, and a task top-3 leaderboard. Hot-pluggable — mounted via dsh plugin add link:<path> + the profile bundle layer, no dsh source changes.",
+  "version": "1.0.0",
+  "type": "module",
+  "packageManager": "pnpm@11.7.0",
+  "license": "MIT",
+  "author": "Jinkefan",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek",
+    "token-usage",
+    "token-statistics",
+    "usage-dashboard",
+    "cost-estimation",
+    "model-ranking",
+    "project-stats"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-connection"
+      ],
+      "platform": "web"
+    }
+  },
+  "dependencies": {}
+}
